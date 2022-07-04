@@ -17,25 +17,14 @@ h1 {text-align: center; font-family: Helvetica, sans-serif;}
 
 
 
-
-.buttonCont {
-  display: flex;
-  margin: 0;
-  position: absolute;
-  height: 30px;;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);  
-}
-
 button {
   color: white;
   height: 30px;
   margin-right: 10px;
   margin-left: 10px;
-  background: salmon;
-  border: 1px salmon solid;
-  box-shadow: inset 0 1px 0 lightpink;
+  background: darkcyan;
+  border: 1px cyan;
+  box-shadow: inset 0 1px 0 lightcyan;
 }
 
 .breaker {
