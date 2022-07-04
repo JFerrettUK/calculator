@@ -1,0 +1,1 @@
+This calculactor will perform all the basic functions expected, such as add, subtract, and divide.
