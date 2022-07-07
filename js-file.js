@@ -1,4 +1,11 @@
 let result = '';
+let input1 = '';
+let input2 = '';
+let input3 = '';
+let input4 = '';
+let input5 = '';
+let input6 = '';
+let input7 = '';
 
 function operate(input1, operator, input2) {
 
@@ -99,8 +106,7 @@ document.getElementById("6").addEventListener("click", function(){
 document.getElementById("7").addEventListener("click", function(){
     addText(7);
     ani(7);
-});operate(7, ' * ', 9)
-
+});
 document.getElementById("8").addEventListener("click", function(){
     addText(8);
     ani(8);
@@ -114,19 +120,27 @@ document.getElementById("0").addEventListener("click", function(){
     ani(0);
 });
 document.getElementById('minus').addEventListener("click", function(){
-    addText(' - ');
+    input1 = displayScrn.innerHTML;
+    operator = "-";
+    clearContent();
     ani('minus');
 });
 document.getElementById('add').addEventListener("click", function(){
-    addText(' + ');
+    input1 = displayScrn.innerHTML;
+    operator = "+";
+    clearContent();
     ani('add');
 });
 document.getElementById('divide').addEventListener("click", function(){
-    addText(' / ');
+    input1 = displayScrn.innerHTML;
+    operator = "%";
+    clearContent();
     ani('divide');
 });
 document.getElementById('times').addEventListener("click", function(){
-    addText(' * ');
+    input1 = displayScrn.innerHTML;
+    operator = "*";
+    clearContent();
     ani('times');
 });
 document.getElementById('clear').addEventListener("click", function(){
@@ -134,6 +148,8 @@ document.getElementById('clear').addEventListener("click", function(){
     ani2('clear');
 });
 document.getElementById('equals').addEventListener("click", function(){
+    input2 = displayScrn.innerHTML;
+    operate(input1, operator, input2);
     equals(result);
     ani2('equals');
 });
