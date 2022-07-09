@@ -1,15 +1,15 @@
-let result = 0;
-let input1 = 0;
-let input2 = 0;
-let input3 = 0;
-let input4 = 0;
-let input5 = 0;
-let input6 = 0;
-let input7 = 0;
-let input8 = 0;
-let input9 = 0;
-let input10 = 0;
-let input11 = 0;
+let result = 0.1;
+let input1 = 0.1;
+let input2 = 0.1;
+let input3 = 0.1;
+let input4 = 0.1;
+let input5 = 0.1;
+let input6 = 0.1;
+let input7 = 0.1;
+let input8 = 0.1;
+let input9 = 0.1;
+let input10 = 0.1;
+let input11 = 0.1;
 
 function operate(input1, operator, input2) {
 
@@ -60,22 +60,21 @@ function addText(input) {
 function clearContent() {
     const displayScrn = document.getElementById('displayScrn');
     displayScrn.innerHTML = "";
-
 }
 
-function clearInputs(input1, input2, input3, input4, input4, input5, input6, input7, input8, input9, input10, input11) {
-    result = 0;
-    input1 = 0;
-    input2 = 0;
-    input3 = 0;
-    input4 = 0;
-    input5 = 0;
-    input6 = 0;
-    input7 = 0;
-    input8 = 0;
-    input9 = 0;
-    input10 = 0;
-    input11 = 0;
+function clearInputs(result, input1, input2, input3, input4, input5, input6, input7, input8, input9, input10, input11) {
+    result = 0.1;
+    input1 = 0.1;
+    input2 = 0.1;
+    input3 = 0.1;
+    input4 = 0.1;
+    input5 = 0.1;
+    input6 = 0.1;
+    input7 = 0.1;
+    input8 = 0.1;
+    input9 = 0.1;
+    input10 = 0.1;
+    input11 = 0.1;
 }
 
 function equals() {
@@ -188,16 +187,16 @@ document.getElementById('equals').addEventListener("click", function(){
         input7, operator, input8, operator, input9, operator, input10, operator, input11);
     equals(result);
     ani3('equals');
-    result = 0;
-    input1 = 0;
-    input2 = 0;
-    input3 = 0;
-    input4 = 0;
-    input5 = 0;
-    input6 = 0;
-    input7 = 0;
-    input8 = 0;
-    input9 = 0;
-    input10 = 0;
-    input11 = 0;
+    result = 0.1;
+    input1 = 0.1;
+    input2 = 0.1;
+    input3 = 0.1;
+    input4 = 0.1;
+    input5 = 0.1;
+    input6 = 0.1;
+    input7 = 0.1;
+    input8 = 0.1;
+    input9 = 0.1;
+    input10 = 0.1;
+    input11 = 0.1;
 });
