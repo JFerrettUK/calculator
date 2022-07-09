@@ -1,16 +1,22 @@
-let result = '';
-let input1 = '';
-let input2 = '';
-let input3 = '';
-let input4 = '';
-let input5 = '';
-let input6 = '';
-let input7 = '';
+let result = 0;
+let input1 = 0;
+let input2 = 0;
+let input3 = 0;
+let input4 = 0;
+let input5 = 0;
+let input6 = 0;
+let input7 = 0;
+let input8 = 0;
+let input9 = 0;
+let input10 = 0;
+let input11 = 0;
 
-function operate(input1, operator, input2) {
+function operate(input1, operator1, input2, operator2, input3, operator3, 
+    input4, operator4, input5, operator5, input6, operator6, input7, operator7,
+    input8, operator8, input9, operator9, input10, operator10, input11) {
 
     function add(input1, input2) {
-        result = input1 + input2;
+        result = Number(input1) + Number(input2);;
         return result;
     }
 
@@ -20,6 +26,10 @@ function operate(input1, operator, input2) {
     }
 
     function divide(input1, input2) {
+        if (input1 == 0 && input2 == 0) {
+            result = "Dividing by zero? Really?";
+            return result;
+        }
         result = input1 / input2;
         return result;
     }
@@ -29,16 +39,16 @@ function operate(input1, operator, input2) {
         return result;
     }
 
-    if (operator == "+") {
+    if (operator1 == "+") {
         result = add(input1, input2);
         return result;
-    } else if (operator == "-") {
+    } else if (operator1 == "-") {
         result = minus(input1, input2);
         return result;
-    } else if (operator == "*") {
+    } else if (operator1 == "*") {
         result = times(input1, input2);
         return result;
-    } else if (operator == "%") {
+    } else if (operator1 == "%") {
         result = divide(input1, input2);
         return result;
     }
@@ -52,6 +62,22 @@ function addText(input) {
 function clearContent() {
     const displayScrn = document.getElementById('displayScrn');
     displayScrn.innerHTML = "";
+
+}
+
+function clearInputs(input1, input2, input3, input4, input4, input5, input6, input7, input8, input9, input10, input11) {
+    result = 0;
+    input1 = 0;
+    input2 = 0;
+    input3 = 0;
+    input4 = 0;
+    input5 = 0;
+    input6 = 0;
+    input7 = 0;
+    input8 = 0;
+    input9 = 0;
+    input10 = 0;
+    input11 = 0;
 }
 
 function equals() {
@@ -62,9 +88,9 @@ function equals() {
 function ani(element) {
     let change = document.getElementById(element);
     setTimeout(function() {
-        change.style.display = (change.style.background = 'darkgrey');
+        change.style.display = (change.style.background = 'lightgrey');
          setTimeout(function() {
-            change.style.display = (change.style.background = 'lightgrey');
+            change.style.display = (change.style.background = 'rgb(240, 240, 240)');
          }, 100);
     }, 100);
 }
@@ -72,9 +98,19 @@ function ani(element) {
 function ani2(element) {
     let change = document.getElementById(element);
     setTimeout(function() {
-        change.style.display = (change.style.background = 'darkgrey');
+        change.style.display = (change.style.background = 'lightgrey');
          setTimeout(function() {
-            change.style.display = (change.style.background = 'rgb(235, 235, 235)');
+            change.style.display = (change.style.background = 'rgb(250, 250, 250)');
+         }, 100);
+    }, 100);
+}
+
+function ani3(element) {
+    let change = document.getElementById(element);
+    setTimeout(function() {
+        change.style.display = (change.style.background = 'darkblue');
+         setTimeout(function() {
+            change.style.display = (change.style.background = 'rgb(57, 107, 214');
          }, 100);
     }, 100);
 }
@@ -84,16 +120,16 @@ document.getElementById("1").addEventListener("click", function(){
     ani(1);
 });
 document.getElementById("2").addEventListener("click", function(){
-    ani(2);
     addText(2);
+    ani(2);
 });
 document.getElementById("3").addEventListener("click", function(){
     addText(3);
     ani(3);
 });
 document.getElementById("4").addEventListener("click", function(){
-    ani(4);
     addText(4);
+    ani(4);
 });
 document.getElementById("5").addEventListener("click", function(){
     addText(5);
@@ -123,25 +159,25 @@ document.getElementById('minus').addEventListener("click", function(){
     input1 = displayScrn.innerHTML;
     operator = "-";
     clearContent();
-    ani('minus');
+    ani2('minus');
 });
 document.getElementById('add').addEventListener("click", function(){
     input1 = displayScrn.innerHTML;
     operator = "+";
     clearContent();
-    ani('add');
+    ani2('add');
 });
 document.getElementById('divide').addEventListener("click", function(){
     input1 = displayScrn.innerHTML;
     operator = "%";
     clearContent();
-    ani('divide');
+    ani2('divide');
 });
 document.getElementById('times').addEventListener("click", function(){
     input1 = displayScrn.innerHTML;
     operator = "*";
     clearContent();
-    ani('times');
+    ani2('times');
 });
 document.getElementById('clear').addEventListener("click", function(){
     clearContent();
@@ -149,7 +185,21 @@ document.getElementById('clear').addEventListener("click", function(){
 });
 document.getElementById('equals').addEventListener("click", function(){
     input2 = displayScrn.innerHTML;
-    operate(input1, operator, input2);
+    operate(input1, operator1, input2, operator2, input3, operator3, 
+        input4, operator4, input5, operator5, input6, operator6, input7, operator7,
+        input8, operator8, input9, operator9, input10, operator10, input11);
     equals(result);
-    ani2('equals');
+    ani3('equals');
+    result = 0;
+    input1 = 0;
+    input2 = 0;
+    input3 = 0;
+    input4 = 0;
+    input5 = 0;
+    input6 = 0;
+    input7 = 0;
+    input8 = 0;
+    input9 = 0;
+    input10 = 0;
+    input11 = 0;
 });
