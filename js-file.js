@@ -11,9 +11,7 @@ let input9 = 0;
 let input10 = 0;
 let input11 = 0;
 
-function operate(input1, operator1, input2, operator2, input3, operator3, 
-    input4, operator4, input5, operator5, input6, operator6, input7, operator7,
-    input8, operator8, input9, operator9, input10, operator10, input11) {
+function operate(input1, operator, input2) {
 
     function add(input1, input2) {
         result = Number(input1) + Number(input2);;
@@ -39,16 +37,16 @@ function operate(input1, operator1, input2, operator2, input3, operator3,
         return result;
     }
 
-    if (operator1 == "+") {
+    if (operator == "+") {
         result = add(input1, input2);
         return result;
-    } else if (operator1 == "-") {
+    } else if (operator == "-") {
         result = minus(input1, input2);
         return result;
-    } else if (operator1 == "*") {
+    } else if (operator == "*") {
         result = times(input1, input2);
         return result;
-    } else if (operator1 == "%") {
+    } else if (operator == "%") {
         result = divide(input1, input2);
         return result;
     }
@@ -185,9 +183,9 @@ document.getElementById('clear').addEventListener("click", function(){
 });
 document.getElementById('equals').addEventListener("click", function(){
     input2 = displayScrn.innerHTML;
-    operate(input1, operator1, input2, operator2, input3, operator3, 
-        input4, operator4, input5, operator5, input6, operator6, input7, operator7,
-        input8, operator8, input9, operator9, input10, operator10, input11);
+    operate(input1, operator, input2, operator, input3, operator, 
+        input4, operator, input4, operator, input5, operator, input6, operator,
+        input7, operator, input8, operator, input9, operator, input10, operator, input11);
     equals(result);
     ani3('equals');
     result = 0;
