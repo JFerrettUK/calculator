@@ -7,6 +7,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   display:flex; flex-direction:column; justify-content:center;
   min-height:90vh;
+  background-color: rgb(255, 255, 255);
 }
 
 h1 {text-align: center; font-family: Helvetica, sans-serif;}
@@ -18,9 +19,9 @@ h1 {text-align: center; font-family: Helvetica, sans-serif;}
 }
 
 .displayCont {
+  display: grid;
   height: 80px;
   width: 400px;
-  display: grid;
   margin: 0 auto;
   grid-template-columns: repeat(1,1fr);   
   grid-template-rows: repeat(1,1fr);

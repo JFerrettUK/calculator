@@ -2,33 +2,32 @@ let result = 0.1;
 let input1 = 0.1;
 let input2 = 0.1;
 
+function add(input1, input2) {
+    result = Number(input1) + Number(input2);
+    return result;
+}
+
+function minus(input1, input2) {
+    result = input1 - input2;
+    return result;
+}
+
+function divide(input1, input2) {
+    if (input1 == 0 && input2 == 0) {
+        result = "Dividing by zero? Really?";
+        return result;
+    }
+    result = input1 / input2;
+    return result;
+}
+
+function times(input1, input2) {
+    result = input1 * input2;
+    return result;
+}
+
 function operate(input1, operator, input2) {
     input2 = displayScrn.innerHTML;
-
-    function add(input1, input2) {
-        result = Number(input1) + Number(input2);
-        return result;
-    }
-
-    function minus(input1, input2) {
-        result = input1 - input2;
-        return result;
-    }
-
-    function divide(input1, input2) {
-        if (input1 == 0 && input2 == 0) {
-            result = "Dividing by zero? Really?";
-            return result;
-        }
-        result = input1 / input2;
-        return result;
-    }
-
-    function times(input1, input2) {
-        result = input1 * input2;
-        return result;
-    }
-
     if (operator == "+") {
         result = add(input1, input2);
         return result;
@@ -55,7 +54,7 @@ function clearContent() {
 }
 
 function equals() {
-    const displayScrn = document.getElementById('displayScrn');
+    let displayScrn = document.getElementById('displayScrn');
     displayScrn.innerHTML = result;
 }
 
@@ -159,7 +158,10 @@ document.getElementById('clear').addEventListener("click", function(){
 });
 
 document.getElementById('equals').addEventListener("click", function(){
-    operate(input1, operator, input2);
+    operate(input1, operator, input2)
     equals(result);
     ani3('equals');
+    input1 = 0
+    result = 0;
+    operator = 0;
 });
