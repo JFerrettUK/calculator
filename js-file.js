@@ -1,93 +1,3 @@
-let result = 0.1;
-let input1 = 0.1;
-let input2 = 0.1;
-
-function add(input1, input2) {
-    result = Number(input1) + Number(input2);
-    return result;
-}
-
-function minus(input1, input2) {
-    result = input1 - input2;
-    return result;
-}
-
-function divide(input1, input2) {
-    if (input1 == 0 && input2 == 0) {
-        result = "Dividing by zero? Really?";
-        return result;
-    }
-    result = input1 / input2;
-    return result;
-}
-
-function times(input1, input2) {
-    result = input1 * input2;
-    return result;
-}
-
-function operate(input1, operator, input2) {
-    input2 = displayScrn.innerHTML;
-    if (operator == "+") {
-        result = add(input1, input2);
-        return result;
-    } else if (operator == "-") {
-        result = minus(input1, input2);
-        return result;
-    } else if (operator == "*") {
-        result = times(input1, input2);
-        return result;
-    } else if (operator == "%") {
-        result = divide(input1, input2);
-        return result;
-    }
-}
-
-function addText(input) {
-    const displayScrn = document.getElementById('displayScrn');
-    displayScrn.insertAdjacentText('beforeend', input);
-}
-
-function clearContent() {
-    const displayScrn = document.getElementById('displayScrn');
-    displayScrn.innerHTML = "";
-}
-
-function equals() {
-    let displayScrn = document.getElementById('displayScrn');
-    displayScrn.innerHTML = result;
-}
-
-function ani(element) {
-    let change = document.getElementById(element);
-    setTimeout(function() {
-        change.style.display = (change.style.background = 'lightgrey');
-         setTimeout(function() {
-            change.style.display = (change.style.background = 'rgb(240, 240, 240)');
-         }, 100);
-    }, 100);
-}
-
-function ani2(element) {
-    let change = document.getElementById(element);
-    setTimeout(function() {
-        change.style.display = (change.style.background = 'lightgrey');
-         setTimeout(function() {
-            change.style.display = (change.style.background = 'rgb(250, 250, 250)');
-         }, 100);
-    }, 100);
-}
-
-function ani3(element) {
-    let change = document.getElementById(element);
-    setTimeout(function() {
-        change.style.display = (change.style.background = 'darkblue');
-         setTimeout(function() {
-            change.style.display = (change.style.background = 'rgb(57, 107, 214');
-         }, 100);
-    }, 100);
-}
-
 document.getElementById("1").addEventListener("click", function(){
     addText(1);
     ani(1);
@@ -128,9 +38,113 @@ document.getElementById("0").addEventListener("click", function(){
     addText(0);
     ani(0);
 });
+
+function ani(element) {
+    let change = document.getElementById(element);
+    setTimeout(function() {
+        change.style.display = (change.style.background = 'lightgrey');
+         setTimeout(function() {
+            change.style.display = (change.style.background = 'rgb(240, 240, 240)');
+         }, 100);
+    }, 100);
+}
+
+function ani2(element) {
+    let change = document.getElementById(element);
+    setTimeout(function() {
+        change.style.display = (change.style.background = 'lightgrey');
+         setTimeout(function() {
+            change.style.display = (change.style.background = 'rgb(250, 250, 250)');
+         }, 100);
+    }, 100);
+}
+
+function ani3(element) {
+    let change = document.getElementById(element);
+    setTimeout(function() {
+        change.style.display = (change.style.background = 'darkblue');
+         setTimeout(function() {
+            change.style.display = (change.style.background = 'rgb(57, 107, 214');
+         }, 100);
+    }, 100);
+}
+
+let result = 0.1;
+let input1 = 0.1;
+let input2 = 0.1;
+const displayScrn = document.getElementById('displayScrn');
+let triggerMulti = false;
+
+function add(input1, input2) {
+    result = Number(input1) + Number(input2);
+    return result;
+}
+
+function minus(input1, input2) {
+    result = input1 - input2;
+    return result;
+}
+
+function divide(input1, input2) {
+    if (input1 == 0 && input2 == 0) {
+        result = "Dividing by zero? Really?";
+        return result;
+    }
+    result = input1 / input2;
+    return result;
+}
+
+function times(input1, input2) {
+    result = input1 * input2;
+    return result;
+}
+
+function operate(input1, operator, input2) {
+    // input2 = displayScrn.innerHTML;
+    if (operator == "+") {
+        result = add(input1, input2);
+        return result;
+    } else if (operator == "-") {
+        result = minus(input1, input2);
+        return result;
+    } else if (operator == "*") {
+        result = times(input1, input2);
+        return result;
+    } else if (operator == "%") {
+        result = divide(input1, input2);
+        return result;
+    }
+}
+
+function addText(input) {
+    displayScrn.insertAdjacentText('beforeend', input);
+}
+
+function clearContent() {
+    displayScrn.innerHTML = "";
+}
+
+function equals() {
+    displayScrn.innerHTML = result;
+}
+
 document.getElementById('add').addEventListener("click", function(){
-    input1 = displayScrn.innerHTML;
-    operator = "+";
+    if (triggerMulti == false) {
+        input1 = displayScrn.innerHTML;
+        operator = "+";    
+        triggerMulti = true;
+    } else if (triggerMulti == 1) {
+        input2 = displayScrn.innerHTML;
+        operator = "+";
+        operate(input1, operator, input2)
+        triggerMulti == 2;
+        input1 = result;
+    }   else if (triggerMulti == 2) {
+        input2 = displayScrn.innerHTML;
+        operator = "+";
+        operate(input1, operator, input2)
+        triggerMulti == 3;
+    }
     clearContent();
     ani2('add');
 });
@@ -155,9 +169,12 @@ document.getElementById('times').addEventListener("click", function(){
 document.getElementById('clear').addEventListener("click", function(){
     clearContent();
     ani2('clear');
+    triggerMulti == false;
 });
 
 document.getElementById('equals').addEventListener("click", function(){
+    input1 = result;
+    input2 = displayScrn.innerHTML;
     operate(input1, operator, input2)
     equals(result);
     ani3('equals');
