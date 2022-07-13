@@ -69,9 +69,9 @@ function ani3(element) {
     }, 100);
 }
 
-let result = 0.1;
-let input1 = 0.1;
-let input2 = 0.1;
+let result = 0;
+let input1 = 0;
+let input2 = 0;
 const displayScrn = document.getElementById('displayScrn');
 let triggerMulti = false;
 
@@ -81,6 +81,7 @@ function add(input1, input2) {
 }
 
 function minus(input1, input2) {
+    input1 = Math.abs(input1);
     result = input1 - input2;
     return result;
 }
@@ -91,6 +92,7 @@ function divide(input1, input2) {
         return result;
     }
     result = input1 / input2;
+    console.log(input1, input2)
     return result;
 }
 
@@ -129,40 +131,53 @@ function equals() {
 }
 
 document.getElementById('add').addEventListener("click", function(){
+    console.log(input1)
     if (triggerMulti == false) {
         input1 = displayScrn.innerHTML;
         operator = "+";    
         triggerMulti = true;
-    } else if (triggerMulti == 1) {
+    } else if (triggerMulti == true) {
         input2 = displayScrn.innerHTML;
         operator = "+";
         operate(input1, operator, input2)
-        triggerMulti == 2;
         input1 = result;
-    }   else if (triggerMulti == 2) {
-        input2 = displayScrn.innerHTML;
-        operator = "+";
-        operate(input1, operator, input2)
-        triggerMulti == 3;
     }
     clearContent();
     ani2('add');
+    console.log(input1)
 });
 document.getElementById('minus').addEventListener("click", function(){
-    input1 = displayScrn.innerHTML;
-    operator = "-";
+    if (triggerMulti == false) {
+        input1 = displayScrn.innerHTML;
+        operator = "-";    
+        triggerMulti = true;
+    } else if (triggerMulti == true) {
+        input2 = displayScrn.innerHTML;
+        operator = "-";
+        operate(input1, operator, input2)
+        input1 = result;
+    }
     clearContent();
     ani2('minus');
 });
 document.getElementById('divide').addEventListener("click", function(){
     input1 = displayScrn.innerHTML;
-    operator = "%";
+    operator = "%";    
+    triggerMulti = true;
     clearContent();
     ani2('divide');
 });
 document.getElementById('times').addEventListener("click", function(){
-    input1 = displayScrn.innerHTML;
-    operator = "*";
+    if (triggerMulti == false) {
+        input1 = displayScrn.innerHTML;
+        operator = "*";    
+        triggerMulti = true;
+    } else if (triggerMulti == true) {
+        input2 = displayScrn.innerHTML;
+        operator = "*";
+        operate(input1, operator, input2)
+        input1 = result;
+    }
     clearContent();
     ani2('times');
 });
@@ -173,12 +188,14 @@ document.getElementById('clear').addEventListener("click", function(){
 });
 
 document.getElementById('equals').addEventListener("click", function(){
-    input1 = result;
-    input2 = displayScrn.innerHTML;
-    operate(input1, operator, input2)
+    if (triggerMulti == true) {
+        input2 = displayScrn.innerHTML;
+        operate(input1, operator, input2)
+    }
     equals(result);
     ani3('equals');
-    input1 = 0
-    result = 0;
+    input1 = 0;
+    input2 = 0;
     operator = 0;
+    result = 0;
 });
