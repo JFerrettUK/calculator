@@ -69,10 +69,10 @@ function ani3(element) {
     }, 100);
 }
 
+const displayScrn = document.getElementById('displayScrn');
 let result = 0;
 let input1 = 0;
 let input2 = 0;
-const displayScrn = document.getElementById('displayScrn');
 let triggerMulti = false;
 
 function add(input1, input2) {
@@ -81,7 +81,6 @@ function add(input1, input2) {
 }
 
 function minus(input1, input2) {
-    input1 = Math.abs(input1);
     result = input1 - input2;
     return result;
 }
@@ -92,7 +91,6 @@ function divide(input1, input2) {
         return result;
     }
     result = input1 / input2;
-    console.log(input1, input2)
     return result;
 }
 
@@ -102,7 +100,6 @@ function times(input1, input2) {
 }
 
 function operate(input1, operator, input2) {
-    // input2 = displayScrn.innerHTML;
     if (operator == "+") {
         result = add(input1, input2);
         return result;
@@ -130,61 +127,76 @@ function equals() {
     displayScrn.innerHTML = result;
 }
 
+function resetParameters() {
+    input1 = 0;
+    input2 = 0;
+    operator = 0;
+    result = 0;
+}
+
 document.getElementById('add').addEventListener("click", function(){
-    console.log(input1)
+    console.log(input1, input2)
     if (triggerMulti == false) {
-        input1 = displayScrn.innerHTML;
         operator = "+";    
+        input1 = displayScrn.innerHTML;
         triggerMulti = true;
     } else if (triggerMulti == true) {
+        operator = "+";    
         input2 = displayScrn.innerHTML;
-        operator = "+";
-        operate(input1, operator, input2)
-        input1 = result;
+        input1 = operate(input1, operator, input2);
     }
     clearContent();
     ani2('add');
-    console.log(input1)
+    console.log(input1, input2)
 });
+
 document.getElementById('minus').addEventListener("click", function(){
+    console.log(input1, input2)
     if (triggerMulti == false) {
-        input1 = displayScrn.innerHTML;
         operator = "-";    
+        input1 = displayScrn.innerHTML;
         triggerMulti = true;
     } else if (triggerMulti == true) {
+        operator = "-";    
         input2 = displayScrn.innerHTML;
-        operator = "-";
-        operate(input1, operator, input2)
-        input1 = result;
+        input1 = operate(input1, operator, input2);
     }
     clearContent();
     ani2('minus');
+    console.log(input1, input2)
 });
+
 document.getElementById('divide').addEventListener("click", function(){
-    input1 = displayScrn.innerHTML;
-    operator = "%";    
-    triggerMulti = true;
-    clearContent();
-    ani2('divide');
-});
-document.getElementById('times').addEventListener("click", function(){
+    operator = "%";
     if (triggerMulti == false) {
         input1 = displayScrn.innerHTML;
-        operator = "*";    
         triggerMulti = true;
     } else if (triggerMulti == true) {
         input2 = displayScrn.innerHTML;
-        operator = "*";
-        operate(input1, operator, input2)
-        input1 = result;
+        input1 = operate(input1, operator, input2);
+    }
+    clearContent();
+    ani2('divide');
+});
+
+document.getElementById('times').addEventListener("click", function(){
+    operator = "*";
+    if (triggerMulti == false) {
+        input1 = displayScrn.innerHTML;
+        triggerMulti = true;
+    } else if (triggerMulti == true) {
+        input2 = displayScrn.innerHTML;
+        input1 = operate(input1, operator, input2);
     }
     clearContent();
     ani2('times');
 });
+
 document.getElementById('clear').addEventListener("click", function(){
     clearContent();
     ani2('clear');
-    triggerMulti == false;
+    resetParameters()
+    triggerMulti = false;
 });
 
 document.getElementById('equals').addEventListener("click", function(){
@@ -194,8 +206,6 @@ document.getElementById('equals').addEventListener("click", function(){
     }
     equals(result);
     ani3('equals');
-    input1 = 0;
-    input2 = 0;
-    operator = 0;
-    result = 0;
+    resetParameters()
+    triggerMulti = false;
 });
