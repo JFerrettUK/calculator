@@ -319,4 +319,13 @@ document.addEventListener('keydown', (event) => {
         resetParameters()
         triggerMulti = false;
     }
+    else if(event.key == "Enter") {    
+        if (triggerMulti == true) {
+            addInput = displayScrn.innerHTML;
+            storedInput = operate(storedInput, operator, addInput)
+        }
+        equals(storedInput);
+        resetParameters()
+        triggerMulti = false;
+    }
 });
