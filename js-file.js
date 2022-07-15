@@ -1,11 +1,10 @@
-
 const displayScrn = document.getElementById('displayScrn');
-let result = 0;
-let storedInput = 0;
-let addInput = 0;
+let result = "";
+let storedInput = "";
+let addInput = "";
 let triggerMulti = false;
 let noDec = true;
-let screenText = 0;
+let screenText = "";
 
 
 document.getElementById("1").addEventListener("click", function () {
@@ -148,14 +147,13 @@ function equals() {
 }
 
 function resetParameters() {
-    storedInput = 0;
-    addInput = 0;
-    operator = 0;
-    result = 0;
+    storedInput = "";
+    addInput = "";
+    operator = "";
+    result = "";
 }
 
 document.getElementById('add').addEventListener("click", function () {
-    console.log(storedInput, addInput)
     if (triggerMulti == false) {
         operator = "+";
         storedInput = displayScrn.innerHTML;
@@ -167,11 +165,9 @@ document.getElementById('add').addEventListener("click", function () {
     }
     clearContent();
     ani2('add');
-    console.log(storedInput, addInput)
 });
 
 document.getElementById('minus').addEventListener("click", function () {
-    console.log(storedInput, addInput)
     if (triggerMulti == false) {
         operator = "-";
         storedInput = displayScrn.innerHTML;
@@ -183,11 +179,9 @@ document.getElementById('minus').addEventListener("click", function () {
     }
     clearContent();
     ani2('minus');
-    console.log(storedInput, addInput)
 });
 
 document.getElementById('divide').addEventListener("click", function () {
-    console.log(storedInput, addInput)
     if (triggerMulti == false) {
         operator = "%";
         storedInput = displayScrn.innerHTML;
@@ -199,11 +193,9 @@ document.getElementById('divide').addEventListener("click", function () {
     }
     clearContent();
     ani2('divide');
-    console.log(storedInput, addInput)
 });
 
 document.getElementById('times').addEventListener("click", function () {
-    console.log(storedInput, addInput)
     if (triggerMulti == false) {
         operator = "*";
         storedInput = displayScrn.innerHTML;
@@ -215,7 +207,6 @@ document.getElementById('times').addEventListener("click", function () {
     }
     clearContent();
     ani2('times');
-    console.log(storedInput, addInput)
 });
 
 document.getElementById('clear').addEventListener("click", function () {
@@ -239,4 +230,93 @@ document.getElementById('equals').addEventListener("click", function () {
     ani3('equals');
     resetParameters()
     triggerMulti = false;
+});
+
+
+
+
+// Keyboard support:
+
+document.addEventListener('keydown', (event) => {
+    console.log(event);
+});
+
+document.addEventListener('keydown', (event) => {
+    if (event.key == "0") {displayScrn.insertAdjacentText('beforeend', 0);}
+    else if (event.key == "1") {displayScrn.insertAdjacentText('beforeend', 1);}
+    else if (event.key == "2") {displayScrn.insertAdjacentText('beforeend', 2);}
+    else if (event.key == "3") {displayScrn.insertAdjacentText('beforeend', 3);}
+    else if (event.key == "4") {displayScrn.insertAdjacentText('beforeend', 4);}
+    else if (event.key == "5") {displayScrn.insertAdjacentText('beforeend', 5);}
+    else if (event.key == "6") {displayScrn.insertAdjacentText('beforeend', 6);}
+    else if(event.key == "7") {displayScrn.insertAdjacentText('beforeend', 7);}
+    else if(event.key == "8") {displayScrn.insertAdjacentText('beforeend', 8);}
+    else if(event.key == "9") {displayScrn.insertAdjacentText('beforeend', 9);}
+    else if(event.key == ".") {    
+        decNumber = document.getElementById("displayScrn").innerHTML;
+        if (decNumber > Math.floor(decNumber)) {
+            noDec = false;
+        } else {
+            noDec = true;
+            addText(".");
+        }
+    }
+    else if(event.key == "Backspace") {backspace();}
+    else if(event.key == "+") {
+        if (triggerMulti == false) {
+            operator = "+";
+            storedInput = displayScrn.innerHTML;
+            triggerMulti = true;
+        } else if (triggerMulti == true) {
+            addInput = displayScrn.innerHTML;
+            storedInput = operate(storedInput, operator, addInput);
+            operator = "+";
+        }
+        clearContent();
+    }
+    else if(event.key == "-") {
+        if (triggerMulti == false) {
+            operator = "-"
+            storedInput = displayScrn.innerHTML;
+            triggerMulti = true;
+        } else if (triggerMulti == true) {
+            addInput = displayScrn.innerHTML;
+            storedInput = operate(storedInput, operator, addInput);
+            operator = "-";
+        }
+        clearContent();
+    }
+    else if(event.key == "*") {
+        if (triggerMulti == false) {
+            operator = "*";
+            storedInput = displayScrn.innerHTML;
+            triggerMulti = true;
+        } else if (triggerMulti == true) {
+            addInput = displayScrn.innerHTML;
+            storedInput = operate(storedInput, operator, addInput);
+            operator = "*";
+        }
+        clearContent();
+    }
+    else if(event.key == "/") {
+        if (triggerMulti == false) {
+            operator = "%";
+            storedInput = displayScrn.innerHTML;
+            triggerMulti = true;
+        } else if (triggerMulti == true) {
+            addInput = displayScrn.innerHTML;
+            storedInput = operate(storedInput, operator, addInput);
+            operator = "%";
+        }
+        clearContent();
+    }
+    else if(event.key == "=") {    
+        if (triggerMulti == true) {
+            addInput = displayScrn.innerHTML;
+            storedInput = operate(storedInput, operator, addInput)
+        }
+        equals(storedInput);
+        resetParameters()
+        triggerMulti = false;
+    }
 });
