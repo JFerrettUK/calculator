@@ -1,1 +1,1 @@
-This calculator will perform all the basic functions expected, such as add, subtract, and divide.
+This calculator performs the basic functions with each input of number pairs being evaluated at a time, such as add, subtract, and divide.
